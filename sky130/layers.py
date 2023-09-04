@@ -1,6 +1,6 @@
 import gdsfactory as gf
 from gdsfactory.typings import Layer, LayerLevel, LayerStack
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 from sky130.config import PATH
 
@@ -439,10 +439,7 @@ class LayerMap(BaseModel):
     TE: Layer = (203, 0)
     TM: Layer = (204, 0)
     TEXT: Layer = (66, 0)
-
-    class Config:
-        frozen = True
-        extra = "forbid"
+    model_config = ConfigDict(frozen=True, extra="forbid")
 
 
 LAYER = LayerMap()
